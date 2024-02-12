@@ -119,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="fa fa-comments bg-purple"></i>
                 <div class="timeline-item">
                   <div class="timeline-footer">
-                    <a data-toggle="modal" data-target="#modal-update{{ $galeri->id }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a data-toggle="modal" data-target="#modal-update{{ $galeri->id }}" class="btn btn-warning btn-sm mr-2">Edit</a>
                     <a href="" data-toggle="modal" data-target="#modal-hapus{{ $galeri->id }}" class="btn btn-danger btn-sm">Hapus</a>
                   </div>
                 </div>
@@ -209,12 +209,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                       <div class="modal-body">
 
-                        <a href="{{ asset('img/'.$galeri->foto) }}" target="_blank">
+                        {{-- <a href="{{ asset('img/'.$galeri->foto) }}">
                           <img src="{{ asset('img/'.$galeri->foto) }}" class="img-fluid mb-2"/>
-                        </a>
+                        </a> --}}
+                        <div>
+                          <img src="{{ asset('img/'.$galeri->foto) }}" class="img-fluid mb-2"/>
+                        </div>
             
                       <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a href="{{ asset('img/'.$galeri->foto) }}" type="submit" class="btn btn-primary" target="_blank">Lihat ukuran asli</a>
                       </div>
                   </div>
                   <!-- /.modal-content -->

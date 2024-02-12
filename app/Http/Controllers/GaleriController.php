@@ -64,9 +64,11 @@ class GaleriController extends Controller
      * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function show(Galeri $galeri)
+    public function show($id)
     {
-        //
+        Galeri::where('id', '=', $id)->delete();
+
+        return back();
     }
 
     /**

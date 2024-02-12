@@ -38,7 +38,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Upload</a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/logout') }}" onclick="return confirm('Yakin ingin Keluar?');" class="nav-link">Logout</a>
+            <a class="nav-link" href="" data-toggle="modal" data-target="#modal-logout">Logout</a>
+            {{-- <a href="{{ url('/logout') }}" onclick="return confirm('Yakin ingin Keluar?');" class="nav-link">Logout</a> --}}
           </li>
           
         </ul>
@@ -49,6 +50,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
       
   </nav>
   <!-- /.navbar -->
+
+  {{-- modal logout --}}
+      <div class="modal fade" id="modal-logout">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title text-center">Peringatan Logout</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Yakin ingin keluar?</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="{{ url('/logout') }}" class="btn btn-danger">Logout</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+  {{-- modal logout end --}}
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -94,7 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="timeline-item">
                   <div class="timeline-footer">
                     <a data-toggle="modal" data-target="#modal-update{{ $galeri->id }}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="" data-toggle="modal" data-target="#modal-hapus{{ $galeri->id }}" class="btn btn-danger btn-sm">Hapus</a>
                   </div>
                 </div>
               </div>
@@ -145,6 +171,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.modal-dialog -->
             </div>
             {{-- update end --}}
+
+            {{-- delete --}}
+            <div class="modal fade" id="modal-hapus{{ $galeri->id }}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title text-center">Peringatan Hapus</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Yakin ingin Hapus?</p>
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a href="{{ route('galeri.show',$galeri->id) }}" class="btn btn-danger">Hapus</a>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            {{-- delete end --}}
 
             {{-- preview foto --}}
               <div class="modal fade" id="modal-preview{{ $galeri->id }}">
